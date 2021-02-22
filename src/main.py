@@ -21,8 +21,7 @@ def send_message(text, chat_id):
     """
     Send a message with {text} to chat with {chat_id}
     """
-    final_text = "You said: " + text
-    url = URL + f"sendMessage?text={final_text}&chat_id={chat_id}"
+    url = URL + f"sendMessage?text={text}&chat_id={chat_id}"
     requests.get(url)
 
 
@@ -34,8 +33,9 @@ def lambda_handler(event, context):
     chat_id = message["message"]["chat"]["id"]
     try:
         file_id = message["message"]["photo"][-1]["file_id"]
-    except KeyError as err:
-        print(f"There was no photo. Error: {err}")
+    except KeyError:
+        send_message("Send me an image! :)", chat_id)
+        return {"statusCode": 200}
     print(message["message"])
     image_data = requests.get(URL + f"getFile?file_id={file_id}")
     image_data = json.loads(image_data.content)
