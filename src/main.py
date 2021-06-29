@@ -82,9 +82,7 @@ def elastic_transform(
         * alpha
     )
     dz = np.zeros_like(dx)
-
     x, y, z = np.meshgrid(np.arange(shape[1]), np.arange(shape[0]), np.arange(shape[2]))
-    print(x.shape)
     indices = (
         np.reshape(y + dy, (-1, 1)),
         np.reshape(x + dx, (-1, 1)),
