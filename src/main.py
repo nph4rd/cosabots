@@ -95,6 +95,3 @@ def elastic_transform(
     dist_reshaped = distored_img.reshape(img.shape)
     dist_reshaped = Image.fromarray(dist_reshaped)
     dist_reshaped.save(directory)
-
-
-__import__("pdb").set_trace()
