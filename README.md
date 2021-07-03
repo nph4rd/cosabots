@@ -1,2 +1,3 @@
-# cosa-bot
-Cosabot (for Telegram)
+# cosabots
+
+`cosabot` clients for Telegram and Twitter.
